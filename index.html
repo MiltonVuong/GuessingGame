@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="milton vuong">
+  <title>Guessing Game</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script>
+    // set the game to start
+    let run = `y`;
+    // run the game while user wants to play
+    while (run === 'y') {
+      // generate a random number between 1 and 10
+      let randomNumber = Math.floor(Math.random() * 10) + 1;
+      // prompt user for first guess
+      let guess = parseInt(prompt(`Guess a Number between 1 and 10.`));
+      // start guess counter at 1 counter
+      let count = 1;
+      // prompt user for addtional guess if they are incorrect
+      while (guess !== randomNumber) {
+        switch (true) {
+          // inform them their guess was too high
+          case (guess > randomNumber):
+            guess = parseInt(prompt(`Your guess was too high, guess again.`));
+            break;
+          // inform them their guess was too low
+          case (guess < randomNumber):
+            guess = parseInt(prompt(`Your guess was too low, guess again.`));
+            break;
+        }
+        // increase count for incorrect counts
+        count++;
+      }
+      // inform user they guessed correctly and prompt them if they want to play again
+      let response = prompt(`You guessed it in ${count} guesses! \nWould you like to play again? (y/n)`);
+      run = response
+      // couldnt figure out why this doesnt work
+      //let run = prompt(`You guessed it in XX guesses! Would you like to play again? (y/n)`);
+    }
+    // thank user for playing
+    alert(`Thank you for playing!`)
+  </script>
+</body>
+
+</html>
